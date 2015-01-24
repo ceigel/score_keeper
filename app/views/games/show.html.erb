@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= content_tag :table, class: "table table-stripped" do %>
+  <%= content_tag :thead do %>
+    <%= content_tag :tr do %>
+      <% @game.players.each do |p| %>
+        <%= content_tag :th do %>
+          <%= p.name %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
 <%= link_to 'Back', games_path %>
