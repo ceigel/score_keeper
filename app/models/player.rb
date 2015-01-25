@@ -14,5 +14,6 @@
 #
 
 class Player < ActiveRecord::Base
-  belongs_to :games
+  belongs_to :game, inverse_of: :players
+  has_many :scores, inverse_of: :player, dependent: :destroy, autosave: true
 end

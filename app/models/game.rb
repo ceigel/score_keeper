@@ -8,8 +8,8 @@
 #
 
 class Game < ActiveRecord::Base
-  has_many :players
-  has_many :scores
+  has_many :players, inverse_of: :game, dependent: :destroy, autosave: true
+  has_many :scores, through: :players
 
   default_scope -> do
     order(created_at: :desc)

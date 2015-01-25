@@ -1,0 +1,10 @@
+<%= form_tag game_scores_path(game_id: @game.to_param), method: :post, authenticity_token: true, class: "form" do %>
+  <% @scores.each_with_index do |score, index| %>
+    <div class="form-group">
+      <%= label_tag score[0]%>
+      <%= number_field_tag "scores[#{score[0]}]", score[1], class: "form-control", autofocus: index==0 %>
+    </div>
+  <% end %>
+  <%= link_to 'Cancel', game_path(@game), role: "button", class:"btn btn-danger" %>
+  <%= submit_tag "Submit", class:"btn btn-primary" %>
+<% end %>

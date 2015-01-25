@@ -8,6 +8,12 @@ class GamesController < ApplicationController
   end
 
   def show
+    @players = @game.players
+    @sums = @game.scores.group(:player_id).sum(:value)
+    @scores = @game.scores
+      .order(created_at: :desc)
+      .each_slice(3)
+      .map{|s| s.map{|t| [t.player_id, t]}.to_h}
   end
 
   def new

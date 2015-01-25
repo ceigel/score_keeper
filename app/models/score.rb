@@ -10,5 +10,7 @@
 #
 
 class Score < ActiveRecord::Base
-  belongs_to :games
+  belongs_to :player, inverse_of: :scores
+
+  validates :value, numericality: true
 end

@@ -1,13 +1,40 @@
-
-<%= content_tag :table, class: "table table-stripped" do %>
-  <%= content_tag :thead do %>
-    <%= content_tag :tr do %>
-      <% @game.players.each do |p| %>
-        <%= content_tag :th do %>
+<%= link_to 'Back', games_path, role: "button", class:"btn btn-danger" %>
+<%= link_to 'Add scores', new_game_score_path(@game), role: "button", class:"btn btn-success" %>
+<%= content_tag :table, class: "lower table table-stripped table-bordered" do %>
+  <thead>
+    <tr class="active">
+      <th>
+        Game
+      </th>
+      <% @players.each do |p| %>
+        <th>
           <%= p.name %>
-        <% end %>
+        </th>
       <% end %>
+    </tr>
+    <tr class="success">
+      <th>
+        Sums
+      </th>
+      <% @players.each do |p| %>
+        <th>
+          <%= @sums[p.id] %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scores.each_with_index do |score, index| %>
+      <tr>
+        <td>
+          <%= @scores.count - index %>
+        </td>
+        <% @players.each do |player| %>
+          <td>
+            <%= score[player.id].value %>
+          </td>
+        <% end %>
+      </tr>
     <% end %>
-  <% end %>
+  </tbody>
 <% end %>
-<%= link_to 'Back', games_path %>
