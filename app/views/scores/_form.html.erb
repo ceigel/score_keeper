@@ -1,8 +1,25 @@
 <%= form_tag game_scores_path(game_id: @game.to_param), method: :post, authenticity_token: true, class: "form" do %>
-  <% @scores.each_with_index do |score, index| %>
+  <% if @scores.any? {|s| s.errors.any? } %>
+    <% errors = @scores.map{|s| s.errors}.select{|e| e.any? } %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2>Errors: </h2>
+
+      <ul>
+        <% @scores.select{|s| s.errors.any? }.map{|s| [s.errors, s.player.name]}.each do |errors, player| %>
+          <% errors.full_messages.each do |message| %>
+            <li><%= player %> - <%= message %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% scores_map = @scores.map{|s| [s.player_id, s]}.to_h %>
+  <% puts scores_map.to_yaml %>
+  <% @players.each_with_index do |player, index| %>
     <div class="form-group">
-      <%= label_tag score[0]%>
-      <%= number_field_tag "scores[#{score[0]}]", score[1], class: "form-control", autofocus: index==0 %>
+      <%= label_tag player.name %>
+      <%= number_field_tag "scores[#{player.name}]", scores_map[player.id].value, class: "form-control", autofocus: index==0 %>
     </div>
   <% end %>
   <%= link_to 'Cancel', game_path(@game), role: "button", class:"btn btn-danger" %>

@@ -1,5 +1,8 @@
-<%= link_to 'Back', games_path, role: "button", class:"btn btn-danger" %>
-<%= link_to 'Add scores', new_game_score_path(@game), role: "button", class:"btn btn-success" %>
+<%= form_tag new_game_score_path(@game), method: :get do %>
+  <%= link_to 'Back', games_path, role: "button", class:"btn btn-danger" %>
+  <%= submit_tag 'Add scores', class:"btn btn-success", autofocus: true %>
+<% end %>
+
 <%= content_tag :table, class: "lower table table-stripped table-bordered" do %>
   <thead>
     <tr class="active">
@@ -12,16 +15,18 @@
         </th>
       <% end %>
     </tr>
-    <tr class="success">
-      <th>
-        Sums
-      </th>
-      <% @players.each do |p| %>
+    <% unless @sums.empty? %>
+      <tr class="success">
         <th>
-          <%= @sums[p.id] %>
+          Sums
         </th>
-      <% end %>
-    </tr>
+        <% @players.each do |p| %>
+          <th>
+            <%= @sums[p.id] %>
+          </th>
+        <% end %>
+      </tr>
+    <% end %>
   </thead>
   <tbody>
     <% @scores.each_with_index do |score, index| %>

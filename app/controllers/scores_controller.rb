@@ -1,9 +1,9 @@
 class ScoresController < ApplicationController
-  before_action :set_game
+  before_action :set_game_and_players
   respond_to :html
 
   def new
-    @scores = @game.players.map{|p| [p.name, @game.scores.build(value: 0)]}
+    @scores = @game.players.map{|p| p.scores.build(value: 0) }
   end
 
   def create
@@ -20,7 +20,8 @@ class ScoresController < ApplicationController
     end
   end
   private
-  def set_game
+  def set_game_and_players
     @game = Game.find(params[:game_id])
+    @players = @game.players
   end
 end
