@@ -3,8 +3,8 @@
   <%= submit_tag 'Add scores', class:"btn btn-success", autofocus: true %>
 <% end %>
 
-<%= content_tag :table, class: "big lower table table-stripped table-bordered" do %>
-  <thead>
+<%= content_tag :table, class: "lower table table-stripped table-bordered" do %>
+  <thead class="text-large">
     <tr class="active">
       <th>
         Game
@@ -16,7 +16,7 @@
       <% end %>
     </tr>
     <% unless @sums.empty? %>
-      <tr class="success">
+      <tr class="text-danger success">
         <th>
           Sums
         </th>
@@ -28,7 +28,7 @@
       </tr>
     <% end %>
   </thead>
-  <tbody>
+  <tbody class="text-small">
     <% @scores.each_with_index do |score, index| %>
       <tr>
         <td>
