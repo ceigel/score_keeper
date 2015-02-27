@@ -1,28 +1,7 @@
 == README
+This is a program for keeping scores in card games (for example in a game of rummy). Normally it would be written in Javascript, with localstorage, but it was easier/faster to write in rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+===Versions
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Ruby - 2.1.4
+Rails - 4.1.8
