@@ -1,7 +1,8 @@
-== README
+== Score keeper
 This is a program for keeping scores in card games (for example in a game of rummy). Normally it would be written in Javascript, with localstorage, but it was easier/faster to write in rails.
 
 ===Versions
 
 Ruby - 2.1.4
+
 Rails - 4.1.8
