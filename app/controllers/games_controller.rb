@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     @sums = @game.scores.group(:player_id).sum(:value)
     @scores = @game.scores
       .order(created_at: :desc)
-      .each_slice(3)
+      .each_slice(@players.count)
       .map{|s| s.map{|t| [t.player_id, t]}.to_h}
   end
 
