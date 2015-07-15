@@ -1,5 +1,5 @@
 == Score keeper
-This is a program for keeping scores in card games (for example in a game of rummy). It can be tested at ceigel-scores.herokuapp.com.
+This is a program for keeping scores in card games (for example in a game of rummy). It can be tested at http://ceigel-scores.herokuapp.com.
 
 ===Versions
 
