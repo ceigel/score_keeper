@@ -1,5 +1,5 @@
 == Score keeper
-This is a program for keeping scores in card games (for example in a game of rummy). Normally it would be written in Javascript, with localstorage, but it was easier/faster to write in rails.
+This is a program for keeping scores in card games (for example in a game of rummy). It can be tested at ceigel-scores.herokuapp.com.
 
 ===Versions
 
