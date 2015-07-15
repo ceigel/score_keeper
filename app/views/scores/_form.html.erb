@@ -15,7 +15,6 @@
   <% end %>
 
   <% scores_map = @scores.map{|s| [s.player_id, s]}.to_h %>
-  <% puts scores_map.to_yaml %>
   <% @players.each_with_index do |player, index| %>
     <div class="form-group">
       <%= label_tag player.name %>
